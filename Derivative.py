@@ -5,6 +5,7 @@ import matplotlib.pyplot as plt
 '''
 example: 
 
+Note: This might not work with negative exponents when passing in an expression, so make sure that all exponents are positive.
 2x^3 + 3x -8
 coeficient = [2, 3, -8]
 exponents = [3, 1, 0]
@@ -19,7 +20,7 @@ def derive_power(coeficients, exponents):
         ret_exp.append(exponents[i] - 1)
     return [ret_term, ret_exp]
     
-''' Take all orders of derivative and evaluate using x_val, returns an array of all derivative'''
+''' Take all orders of derivative and evaluate using x_val, returns an array of all derivative that are evaluated'''
 def f_of_x(coef, exp, x_val):
     val = []
     for i in range(max(exp)):
