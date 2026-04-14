@@ -5,7 +5,9 @@ import matplotlib.pyplot as plt
 '''
 example: 
 
+Note: Please simplify the equation until it satisfies this format, Cx^n + Cx^n+1 + Cx^n+2 ... where C is any constant, x is the variable and n is the exponent
 Note: This might not work with negative exponents when passing in an expression, so make sure that all exponents are positive.
+
 2x^3 + 3x -8
 coeficient = [2, 3, -8]
 exponents = [3, 1, 0]
