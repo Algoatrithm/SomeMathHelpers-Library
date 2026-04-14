@@ -1,7 +1,7 @@
 import numpy as np
 import math
 import matplotlib.pyplot as plt
-from sympy import symbols, sympify, lambdify
+from sympy import symbols, sympify, lambdify, expand
 
 
 class Derivatives:
@@ -51,7 +51,7 @@ class Derivatives:
 
     ''' 
 
-    Take a singlefunction and evaluate using x_val, returns 
+    Take a single function and evaluate using x_val, returns 
     the evaluated function (int)
 
     '''
@@ -59,6 +59,9 @@ class Derivatives:
         eval = 0
         for i in range(len(coef)):
             if (exp[i] < 0):
+                continue
+            if (exp[i] == 0):
+                eval = eval + coef[i]
                 continue
             eval = eval + coef[i]*(x_val**exp[i]);
         return eval
@@ -84,6 +87,29 @@ class NumericalAnalysis:
 
     def __init__(self, name, age):
         pass
+    def get_binomial_expansion(expr):
+        x = symbols('x')
+        return expand(expr)
+    
+    def bisection_method(coef, exp, _a, _b, limit = 0, show_each_iteration = False):
+        c = 0
+        a = _a
+        b = _b
+        q = 0
+        eval = 0
+        #if (limit > 0):
+        #c = (a + b)/2
+        for i in range(limit):
+            c = (a + b)/2
+            q = Derivatives.evaluate_single(coef, exp, c)
+            if (q < 0):
+                a = c
+            elif (q > 0):
+                b = c
+            if (show_each_iteration):
+                print("Iteration: " + str(i) + " = " + str(q))
+                
+
     def get_taylor_series_as_text(orig_f_coe, orig_f_exp, x0, fofx0):
         factorial = 1
         multiplier = 1
