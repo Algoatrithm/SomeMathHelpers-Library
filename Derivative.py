@@ -23,7 +23,12 @@ def derive_power(coeficients, exponents):
     return [ret_term, ret_exp]
     
 
-''' Take all orders of derivative and evaluate using x_val, returns an array of all derivative that have been evaluated'''
+''' 
+
+Take all orders of derivative and evaluate using x_val, returns an 
+array of all derivative that have been evaluated
+
+'''
 def f_of_x(coef, exp, x_val):
     val = []
     for i in range(max(exp)):
@@ -38,6 +43,19 @@ def f_of_x(coef, exp, x_val):
         val.append(eval)
     return val
 
+''' 
+
+Take a singlefunction and evaluate using x_val, returns 
+the evaluated function (int)
+
+'''
+def evaluate_single(coef, exp, x_val):
+    eval = 0
+    for i in range(len(coef)):
+        if (exp[i] < 0):
+            continue
+        eval = eval + coef[i]*(x_val**exp[i]);
+    return eval
 ''' 
 Returns an array of all orders of derivative
 [ [][], [][], [][]] - the returned array will have two arrays in one element
