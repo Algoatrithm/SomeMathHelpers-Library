@@ -22,19 +22,21 @@ def derive_power(coeficients, exponents):
         ret_exp.append(exponents[i] - 1)
     return [ret_term, ret_exp]
     
-''' Take all orders of derivative and evaluate using x_val, returns an array of all derivative that are evaluated'''
+
+''' Take all orders of derivative and evaluate using x_val, returns an array of all derivative that have been evaluated'''
 def f_of_x(coef, exp, x_val):
     val = []
     for i in range(max(exp)):
         eval = 0
+        new_term = derive_power(coef, exp)
+        coef = new_term[0]
+        exp = new_term[1]
         for i in range(len(coef)):
             if (exp[i] < 0):
                 continue
             eval = eval + coef[i]*(x_val**exp[i]);
-        new_term = derive_power(coef, exp)
-        coef = new_term[0]
-        exp = new_term[1]
         val.append(eval)
+        print(val)
     return val
 
 ''' 
