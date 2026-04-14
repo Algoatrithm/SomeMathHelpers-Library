@@ -36,7 +36,6 @@ def f_of_x(coef, exp, x_val):
                 continue
             eval = eval + coef[i]*(x_val**exp[i]);
         val.append(eval)
-        print(val)
     return val
 
 ''' 
