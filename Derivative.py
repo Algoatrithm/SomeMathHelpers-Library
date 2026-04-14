@@ -31,7 +31,6 @@ def f_of_x(coef, exp, x_val):
             if (exp[i] < 0):
                 continue
             eval = eval + coef[i]*(x_val**exp[i]);
-            print(str(coef[i]*(x_val**exp[i])) + " " + str(coef[i]) + " " + str(x_val)+ " " + str(exp[i]))
         new_term = derive_power(coef, exp)
         coef = new_term[0]
         exp = new_term[1]
