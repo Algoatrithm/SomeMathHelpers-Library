@@ -1,5 +1,5 @@
-from Derivative import Derivatives
-from  Derivative import NumericalAnalysis
+from SomeMathHelpers import Derivatives
+from  SomeMathHelpers import NumericalAnalysis
 
 # f(x) = −2x^5−3x^2+5x−1
 
