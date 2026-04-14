@@ -11,6 +11,8 @@ class Derivatives:
     '''
     example: 
 
+    Note: Does not evaluate trancendent funtions.
+    Note: 'x' variable can be trancendal.
     Note: Please simplify the equation until it satisfies this format, Cx^n + Cx^n+1 + Cx^n+2 ... where C is any constant, x is the variable and n is the exponent
     Note: This might not work with negative exponents when passing in an expression, so make sure that all exponents are positive.
 
@@ -91,7 +93,7 @@ class NumericalAnalysis:
         x = symbols('x')
         return expand(expr)
     
-    def bisection_method(coef, exp, _a, _b, limit = 0, show_each_iteration = False):
+    def bisection_method_by_iteration(coef, exp, _a, _b, limit = 10, show_each_iteration = False, graph = False):
         c = 0
         a = _a
         b = _b
@@ -108,7 +110,33 @@ class NumericalAnalysis:
                 b = c
             if (show_each_iteration):
                 print("Iteration: " + str(i) + " = " + str(q))
+        print("x = " + str(q))
                 
+    def bisection_method_by_stopping_criteria(coef, exp, _a, _b, epsilon_s = 0.5, show_each_iteration = False, show_each_error = False, graph = False):
+        c = 0
+        a = _a
+        b = _b
+        q = 0
+        prev_c = 0
+        iteration = 0
+        err_percent = 0
+        while(True):
+            prev_c = c
+            c = (a + b)/2
+            q = Derivatives.evaluate_single(coef, exp, c)
+            if (q < 0):
+                a = c
+            elif (q > 0):
+                b = c
+            err_percent = abs((c - prev_c)/c) * 100
+            if (show_each_iteration):
+                print("Iteration: " + str(iteration) + " = " + str(q))
+            if (show_each_error):
+                print("Error = " + str(err_percent) + "%")
+            if (err_percent <= epsilon_s):
+                print("x = " + str(q))
+                break
+            
 
     def get_taylor_series_as_text(orig_f_coe, orig_f_exp, x0, fofx0):
         factorial = 1
