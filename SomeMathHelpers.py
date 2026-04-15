@@ -99,8 +99,6 @@ class NumericalAnalysis:
         b = _b
         q = 0
         eval = 0
-        #if (limit > 0):
-        #c = (a + b)/2
         for i in range(limit):
             c = (a + b)/2
             q = Derivatives.evaluate_single(coef, exp, c)
